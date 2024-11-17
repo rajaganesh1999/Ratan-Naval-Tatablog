@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Legacy of Ratan Naval Tata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00539B;
+            --secondary-color: #FF6B35;
+            --background-color: #F5F5F5;
+            --text-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        main {
+            padding-top: 80px;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--background-color);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievements, .philanthropy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .quotes {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+
+            .left::after, .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>The Legacy of Ratan Naval Tata</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#philanthropy">Philanthropy</a></li>
+                    <li><a href="#quotes">Quotes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</br></br>
+
+    <main class="container">
+        <section id="about" class="hero">
+            <img src="https://img.etimg.com/thumb/width-1600,height-900,imgsize-41602,resizemode-75,msid-114140750/news/company/corporate-trends/a-standing-ovation-for-ratan-tata.jpg" alt="Ratan Naval Tata receiving a standing ovation">
+            <div class="hero-content">
+                <h2>About Ratan Naval Tata</h2>
+                <p>Ratan Naval Tata (born 28 December 1937) is an Indian industrialist, philanthropist, and former chairman of Tata Sons. He was the chairman of Tata Group, from 1990 to 2012, and again, as interim chairman, from October 2016 through February 2017. He continues to head its charitable trusts.</p>
+                <p>Born into the prominent Tata family, he is the great-grandson of Jamsetji Tata, the founder of Tata Group. Ratan joined the company in 1961 after turning down a job with IBM offered by JRD Tata. He was initially assigned to Jamshedpur to work at Tata Steel. He worked on the shop floor of Tata Steel, shoveling limestone and handling the blast furnace.</p>
+                <p>Ratan Tata is notable for his business ethics, strategic vision, and commitment to innovation. His leadership transformed the Tata Group from a largely India-centric company to a global business, with operations in more than 100 countries across six continents.</p>
+            </div>
+        </section>
+
+        <section id="timeline" class="timeline">
+            <h2>Life and Career Timeline</h2>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1937</h3>
+                    <p>Born on December 28 in Bombay, British India</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>1962</h3>
+                    <p>Joins Tata Steel on the shop floor</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1971</h3>
+                    <p>Becomes Director-in-Charge of the National Radio & Electronics Company Limited (NELCO)</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>1981</h3>
+                    <p>Appointed Chairman of Tata Industries</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>1991</h3>
+                    <p>Becomes Chairman of Tata Sons and Tata Group</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2000</h3>
+                    <p>Awarded the Padma Bhushan, India's third-highest civilian honor</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2008</h3>
+                    <p>Launches Tata Nano, the world's cheapest car, and receives the Padma Vibhushan</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2012</h3>
+                    <p>Retires as Chairman of Tata Sons, succeeded by Cyrus Mistry</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2016</h3>
+                    <p>Returns as Interim Chairman of Tata Sons</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2017</h3>
+                    <p>Steps down as Interim Chairman, succeeded by N. Chandrasekaran</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="achievements">
+            <h2>Key Achievements</h2>
+            <div class="card">
+                <h3>Global Expansion</h3>
+                <p>Led Tata Group's international expansion with strategic acquisitions:</p>
+                <ul>
+                    <li>Tetley (2000) for $450 million</li>
+                    <li>Corus Group (2007) for $12 billion</li>
+                    <li>Jaguar Land Rover (2008) for $2.3 billion</li>
+                </ul>
+                <p>These acquisitions transformed Tata from a largely India-centric company to a global conglomerate.</p>
+            </div>
+            <div class="card">
+                <h3>Tata Nano</h3>
+                <p>Conceptualized and launched the Tata Nano in 2009, aiming to provide affordable transportation to millions of Indians. The Nano was priced at just ₹100,000 (about $2,000 at the time), making it the world's cheapest car.</p>
+            </div>
+            <div class="card">
+                <h3>Business Growth</h3>
+                <p>Under Ratan Tata's leadership, the group's revenues grew manifold:</p>
+                <ul>
+                    <li>1991: $5.7 billion</li>
+                    <li>2011-12: Over $100 billion</li>
+                </ul>
+                <p>This represented a compound annual growth rate of over 13% over two decades.</p>
+            </div>
+            <div class="card">
+                <h3>Innovation Focus</h3>
+                <p>Established the Tata Innoverse program to foster innovation across the group. This led to the development of several groundbreaking products and services, including the Tata Swach water purifier and the Tata Ace mini-truck.</p>
+            </div>
+        </section>
+
+        <section id="philanthropy" class="philanthropy">
+            <h2>Philanthropic Efforts</h2>
+            <div class="card">
+                <h3>Personal Contributions</h3>
+                <p>Donated 65% of his shares in Tata Sons, valued at approximately $662 million, to charitable trusts.</p>
+            </div>
+            <div class="card">
+                <h3>Tata Trusts</h3>
+                <p>As Chairman of Tata Trusts, oversees philanthropic activities that:</p>
+                <ul>
+                    <li>Support education initiatives</li>
+                    <li>Provide healthcare services</li>
+                    <li>Promote rural development</li>
+                    <li>Advance scientific research</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Disaster Relief</h3>
+                <p>Led Tata Group's efforts in providing relief during natural disasters, including:</p>
+                
+                <ul>
+                    <li>2001 Gujarat earthquake</li>
+                    <li>2004 Indian Ocean tsunami</li>
+                    <li>2015 Nepal earthquake</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Education Support</h3>
+                <p>Donated $50 million to his alma mater, Cornell University, for a technology campus and $25 million to Harvard Business School for an executive center.</p>
+            </div>
+        </section>
+
+        <section id="quotes" class="quotes">
+            <h2>Inspirational Quotes</h2>
+            <blockquote class="quote">
+                <p>"I don't believe in taking right decisions. I take decisions and then make them right."</p>
+            </blockquote>
+            <blockquote class="quote">
+                <p>"Ups and downs in life are very important to keep us going, because a straight line even in an ECG means we are not alive."</p>
+            </blockquote>
+            <blockquote class="quote">
+                <p>"If you want to walk fast, walk alone. But if you want to walk far, walk together."</p>
+            </blockquote>
+            <blockquote class="quote">
+                <p>"Business need to go beyond the interest of their companies to the communities they serve."</p>
+            </blockquote>
+            <blockquote class="quote">
+                <p>"I admire people who are very successful. But if that success has been achieved through too much ruthlessness, then I may admire that person, but I can't respect him."</p>
+            </blockquote>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Legacy of Ratan Naval Tata. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate timeline items on scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const animateTimeline = () => {
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                if (itemTop < window.innerHeight - 100) {
+                    item.classList.add('animate');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateTimeline);
+        animateTimeline(); // Initial check on page load
+
+        // Responsive header
+        const header = document.querySelector('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
